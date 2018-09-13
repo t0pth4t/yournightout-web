@@ -1,19 +1,22 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Grid, Navbar } from 'react-bootstrap';
+import { Nav, Navbar, NavItem } from 'react-bootstrap';
 const Menu = () => {
     return (
         <Navbar inverse fixedTop>
-            <Grid>
-                <Navbar.Header>
-                    <Navbar.Brand>
-                        <Link to="/">(Y)our night out</Link>
-                    </Navbar.Brand>
+            <Navbar.Header>
+                <Navbar.Brand>
+                    <Link to="/">(Y)our night out</Link>
+                </Navbar.Brand>
+            </Navbar.Header>
+            <Nav>
+                <li>
                     <Link to="/info">Info</Link>
+                </li>
+                <li>
                     <Link to="/wizard">Get Started</Link>
-                    <Navbar.Toggle />
-                </Navbar.Header>
-            </Grid>
+                </li>
+            </Nav>
         </Navbar>
     )
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import { Grid, Jumbotron, Button, ButtonToolbar } from 'react-bootstrap';
 
 const Home = () => {
@@ -11,20 +12,8 @@ const Home = () => {
             <h1>(Y)our night out</h1>
             <p>
               <ButtonToolbar>
-              <Button
-                bsStyle="success"
-                bsSize="large"
-                href="http://react-bootstrap.github.io/components.html"
-                target="_blank">
-                Get Started
-              </Button>
-              <Button
-                bsStyle="info"
-                bsSize="large"
-                href="http://react-bootstrap.github.io/components.html"
-                target="_blank">
-                What is this?
-              </Button>
+                <Link className="btn btn-lg btn-success" to="/wizard">Get Started</Link>
+                <Link className="btn btn-lg btn-info" to="/info">What is this?</Link>
               </ButtonToolbar>
             </p>
           </Grid>
