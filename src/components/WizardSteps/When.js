@@ -1,14 +1,41 @@
-import React from 'react';
+import React, { Component } from 'react';
+import {  FormGroup, HelpBlock, Row } from 'reactstrap';
 
+class When extends Component {
+    constructor(props, context) {
+        super(props, context);
 
-const When = () => {
+        this.handleChange = this.handleChange.bind(this);
 
-    return (
-        <div>
+        this.state = {
+            value: ''
+        };
+    }
 
-        </div>
-    );
+    getValidationState() {
+        const length = this.state.value.length;
+        if (length > 10) return 'success';
+        else if (length > 5) return 'warning';
+        else if (length > 0) return 'error';
+        return null;
+    }
 
+    handleChange(e) {
+        this.setState({ value: e.target.value });
+    }
+
+    render() {
+        return (
+            <div>
+                    <Row>
+                        <form>
+                            <FormGroup controlId="formControlsSelect">
+                            </FormGroup>
+                        </form>
+                    </Row>
+            </div>
+        );
+    }
 }
 
-export default When;
+export default When

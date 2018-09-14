@@ -1,23 +1,20 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Nav, Navbar, NavItem } from 'react-bootstrap';
+import { Nav, Navbar, NavbarBrand, NavItem, NavLink } from 'reactstrap';
+
 const Menu = () => {
     return (
-        <Navbar inverse fixedTop>
-            <Navbar.Header>
-                <Navbar.Brand>
-                    <Link to="/">(Y)our night out</Link>
-                </Navbar.Brand>
-            </Navbar.Header>
-            <Nav>
-                <li>
-                    <Link to="/info">Info</Link>
-                </li>
-                <li>
-                    <Link to="/wizard">Get Started</Link>
-                </li>
-            </Nav>
-        </Navbar>
+            <Navbar color="light" light expand="md">
+                <Link className="navbar-brand" to="/">(y)our night out</Link>
+                <Nav navbar>
+                    <NavItem>
+                        <Link className="nav-link" to="/info">FAQ</Link>
+                    </NavItem>
+                    <NavItem>
+                        <Link className="nav-link" to="/when">Get Started</Link>
+                    </NavItem>
+                </Nav>
+            </Navbar>
     )
 }
 

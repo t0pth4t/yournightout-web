@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-import { Grid, Jumbotron, Button, ButtonToolbar } from 'react-bootstrap';
+import { Jumbotron, Button } from 'reactstrap';
 
 const Home = () => {
   
@@ -8,15 +8,12 @@ const Home = () => {
       <div>
 
         <Jumbotron>
-          <Grid>
             <h1>(Y)our night out</h1>
             <p>
-              <ButtonToolbar>
-                <Link className="btn btn-lg btn-success" to="/wizard">Get Started</Link>
-                <Link className="btn btn-lg btn-info" to="/info">What is this?</Link>
-              </ButtonToolbar>
+            Ever had a night free but no idea what to do? (Y)our night out can help. Just answer a few simple questions and (Y)our night out will generate a night out!
             </p>
-          </Grid>
+            <Link to="/when"><Button outline color="primary">Get Started</Button>{' '}</Link>
+            <Link to="/info"><Button outline color="secondary">FAQ</Button>{' '}</Link>
         </Jumbotron>
       </div>
     );
