@@ -1,10 +1,9 @@
 import React from 'react';
-import {withRouter} from 'react-router-dom';
 import { Container, Row, Button, Form, FormGroup, Label } from 'reactstrap';
 import { SingleDatePicker } from 'react-dates';
 import moment from 'moment';
 
-class When extends React.Component {
+export default class When extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,7 +14,6 @@ class When extends React.Component {
     this.onDateChange = this.onDateChange.bind(this);
     this.onFocusChange = this.onFocusChange.bind(this);
     this.onDatePress = this.onDatePress.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.showDatePicker= this.showDatePicker.bind(this);
   }
   onDateChange(date) {
@@ -32,11 +30,6 @@ class When extends React.Component {
 
   showDatePicker() {
     this.setState({showDatePicker:true})
-  }
-
-  handleSubmit(){
-    localStorage.setItem('date', this.state.date);
-    this.props.history.push('/preferences');
   }
 
   onFocusChange({ focused }) {
@@ -62,12 +55,10 @@ class When extends React.Component {
                 onDateChange={this.onDateChange}
                 onFocusChange={this.onFocusChange} /> : null }
             </FormGroup>
-            <Button onClick={this.handleSubmit} size="lg" block>Next</Button>
+            <Button size="lg" block>Next</Button>
           </Form>
         </Row>
       </Container>
     );
   }
 }
-
-export default withRouter(When);
