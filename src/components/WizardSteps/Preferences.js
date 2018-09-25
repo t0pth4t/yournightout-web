@@ -1,61 +1,48 @@
 import React from 'react';
-import { Container, Row, Button, Form, FormGroup, Label } from 'reactstrap';
-import { SingleDatePicker } from 'react-dates';
-import moment from 'moment';
+import { Container, Row, Button, Form, FormGroup, Col } from 'reactstrap';
 
-export default class When extends React.Component {
+
+export default class Preferences extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      focused: props.autoFocus,
-      showDatePicker: false,
-      date: props.initialDate,
-    };
-    this.onDateChange = this.onDateChange.bind(this);
-    this.onFocusChange = this.onFocusChange.bind(this);
-    this.onDatePress = this.onDatePress.bind(this);
-    this.showDatePicker= this.showDatePicker.bind(this);
-  }
-  onDateChange(date) {
-    this.setState({ date });
-  }
-
-  onDatePress(tomorrow) {
-    const d = moment(new Date())
-    if(tomorrow){
-      d.add(1, 'day');
+      preferences: []
     }
-    this.setState({date:d, showDatePicker: true});
+    this.addPreference = this.addPreference.bind(this);
   }
 
-  showDatePicker() {
-    this.setState({showDatePicker:true})
+  addPreference(preference) {
+    this.setState(state => ({preferences:  state.preferences.includes(preference) ? state.preferences : state.preferences.concat(preference)}));
   }
-
-  onFocusChange({ focused }) {
-    this.setState({ focused });
-  }
+ 
   render() {
-    const { focused, date, showDatePicker } = this.state;
+    const {preferences} = this.state;
+    const prefs = preferences.map(pref=> 
+      <span>{pref},</span>);
     return (
       <Container>
         <Row>
+          <h1>Choose some things that interest you...</h1>
+          </Row>
+          <Row>
+            <Col>
+          <h3>{prefs}</h3>
+          </Col>
+          </Row>
+          
+          <Row>
           <Form>
             <FormGroup>
-              <Label for="date_input">When would you like to go? </Label>
-              <div />
-              <Button size="lg" onClick={()=>this.onDatePress(false)} outline color="primary">Today</Button>{' '}
-              <Button size="lg" onClick={()=>this.onDatePress(true)} outline color="secondary">Tomorrow</Button>{' '}
-              <Button size="lg" onClick={this.showDatePicker} outline color="info">Another Time</Button>{' '}
-              {showDatePicker ? <SingleDatePicker
-                id="date_input"
-                date={date}
-                minTime={moment(new Date())}
-                focused={focused}
-                onDateChange={this.onDateChange}
-                onFocusChange={this.onFocusChange} /> : null }
+            <Button onClick={()=>this.addPreference('drinking')} color="success" size="lg">Drinking</Button>{' '}
+            <Button onClick={()=>this.addPreference('coffee')} color="info" size="lg">Coffee</Button>{' '}
+            <Button onClick={()=>this.addPreference('dinner')} color="primary" size="lg">Dinner</Button>{' '}
+            <Button onClick={()=>this.addPreference('movies')} color="warning" size="lg">Movies</Button>{' '}
+            <Button onClick={()=>this.addPreference('sporting events')} color="danger" size="lg">Sporting Events</Button>{' '}
+            <Button onClick={()=>this.addPreference('dancing')} color="secondary" size="lg">Dancing</Button>{' '}
             </FormGroup>
-            <Button size="lg" block>Next</Button>
+            <Button color="secondary" size="lg" >Back</Button>{' '}
+            <Button color="primary" size="lg" >Next</Button>{' '}
           </Form>
         </Row>
       </Container>
