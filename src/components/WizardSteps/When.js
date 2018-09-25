@@ -57,7 +57,6 @@ class When extends React.Component {
               {showDatePicker ? <SingleDatePicker
                 id="date_input"
                 date={date}
-                minTime={moment(new Date())}
                 focused={focused}
                 onDateChange={this.onDateChange}
                 onFocusChange={this.onFocusChange} /> : null }

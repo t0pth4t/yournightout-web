@@ -19,7 +19,7 @@ export default class Preferences extends React.Component {
   render() {
     const {preferences} = this.state;
     const prefs = preferences.map(pref=> 
-      <span>{pref},</span>);
+      <span>{pref} </span>);
     return (
       <Container>
         <Row>
@@ -27,7 +27,7 @@ export default class Preferences extends React.Component {
           </Row>
           <Row>
             <Col>
-          <h3>{prefs}</h3>
+          <h3 className="text-muted">{prefs}</h3>
           </Col>
           </Row>
           
