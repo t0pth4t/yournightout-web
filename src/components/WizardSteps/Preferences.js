@@ -10,11 +10,17 @@ export default class Preferences extends React.Component {
       preferences: []
     }
     this.addPreference = this.addPreference.bind(this);
+    this.handleBack = this.handleBack.bind(this);
   }
 
   addPreference(preference) {
     this.setState(state => ({preferences:  state.preferences.includes(preference) ? state.preferences : state.preferences.concat(preference)}));
   }
+
+  handleBack(){
+    this.props.history.push('/when');
+  }
+
  
   render() {
     const {preferences} = this.state;
@@ -41,7 +47,7 @@ export default class Preferences extends React.Component {
             <Button onClick={()=>this.addPreference('sporting events')} color="danger" size="lg">Sporting Events</Button>{' '}
             <Button onClick={()=>this.addPreference('dancing')} color="secondary" size="lg">Dancing</Button>{' '}
             </FormGroup>
-            <Button color="secondary" size="lg" >Back</Button>{' '}
+            <Button onClick={this.handleBack} color="secondary" size="lg" >Back</Button>{' '}
             <Button color="primary" size="lg" >Next</Button>{' '}
           </Form>
         </Row>
